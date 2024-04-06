@@ -1,3 +1,5 @@
+--- Neovim standard options
+
 -- [[ Setting options ]]
 -- NOTE: For more options, you can see `:help option-list`
 -- See `:help vim.opt`
@@ -32,6 +34,9 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.timeoutlen = 300 -- Time to wait for a mapped sequence to complete
 vim.opt.updatetime = 500 -- Faster completion
 vim.opt.undofile = true -- Save undo history
+
+-- Popup menu options
+vim.opt.pumheight = 10 -- Maximum number of items in the popup menu
 
 -- Split configuration on opening
 vim.opt.splitright = true

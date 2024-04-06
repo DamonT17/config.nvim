@@ -1,7 +1,9 @@
-return { -- Useful plugin to show you pending keybinds.
+return {
+  -- [[ Plugin: folke/which-key.nvim ]]
+  -- NOTE: See `:help which-key.nvim.txt` or https://github.com/folke/which-key.nvim for more info
   'folke/which-key.nvim',
-  event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
-  config = function() -- This is the function that runs, AFTER loading
+  event = 'VeryLazy',
+  config = function()
     require('which-key').setup({
       window = {
         border = 'rounded',
@@ -14,6 +16,7 @@ return { -- Useful plugin to show you pending keybinds.
         align = 'center',
       },
     })
+
     -- Document existing key chains
     require('which-key').register({
       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },

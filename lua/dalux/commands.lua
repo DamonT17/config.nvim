@@ -1,3 +1,5 @@
+--- Neovim custom commands
+
 -- [[ Basic Autocommands ]]
 -- NOTE: See `:help lua-guide-autocommands`
 

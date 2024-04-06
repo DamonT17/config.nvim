@@ -1,4 +1,6 @@
 return {
+  -- [[ Plugin: nvim-lualine/lualine.nvim ]]
+  -- NOTE: See `:help lualine.txt` or https://github.com/nvim-lualine/lualine.nvim for more info
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()

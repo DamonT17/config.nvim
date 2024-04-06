@@ -1,4 +1,6 @@
 return {
+  -- [[ Plugin: catppuccin/nvim colorscheme 'mocha' ]]
+  -- NOTE: See `:help catppuccin.txt` or https://github.com/catppuccin/nvim for more info
   'catppuccin/nvim',
   name = 'catppuccin',
   lazy = false,

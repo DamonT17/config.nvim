@@ -1,3 +1,5 @@
+--- Neovim configuration entry point. Inspirations taken from the kickstart.nvim project among other sources.
+
 --[[ Helpful references while getting started with Neovim 
   - Getting started
     :Tutor
@@ -32,9 +34,6 @@ require('dalux.keymaps')
 require('dalux.commands')
 
 -- [[ Configure and install plugins ]]
--- NOTE: To check the current status of your plugins, run `:Lazy`
---  Press `?` in this menu for help. Use `:q` to close the window
---  To update plugins, run `:Lazy update`
 require('lazy').setup('dalux.plugins', {
   change_detection = {
     notify = false,

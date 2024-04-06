@@ -1,4 +1,6 @@
 return {
+  -- [[ Plugin: 'ThePrimeagen/harpoon' ]]
+  -- NOTE: See https://github.com/ThePrimeagen/harpoon/tree/harpoon2 for more info
   'ThePrimeagen/harpoon',
   event = 'VeryLazy',
   branch = 'harpoon2',
@@ -10,7 +12,7 @@ return {
     local harpoon = require('harpoon')
     harpoon.setup({})
 
-    -- [[ Telescope integration ]]
+    -- Telescope integration
     local conf = require('telescope.config').values
     local function toggle_telescope(harpoon_files)
       local file_paths = {}
@@ -30,7 +32,7 @@ return {
         :find()
     end
 
-    -- [[ Harpoon keymaps ]]
+    -- Keymaps
     local wk = require('which-key')
     wk.register({
       ['h'] = {

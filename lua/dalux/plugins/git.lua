@@ -1,4 +1,6 @@
 return {
+  -- [[ Plugin: lewis6991/gitsigns.nvim ]]
+  -- NOTE: See `:help gitsigns.txt` or https://github.com/lewis6991/gitsigns.nvim for more info
   'lewis6991/gitsigns.nvim',
   config = function()
     require('gitsigns').setup({
@@ -19,6 +21,7 @@ return {
         col = 1,
       },
       on_attach = function()
+        -- Keybindings
         local gs = package.loaded.gitsigns
         local wk = require('which-key')
         wk.register({

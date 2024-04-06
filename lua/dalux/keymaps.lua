@@ -1,3 +1,5 @@
+--- Neovim custom kepmaps
+
 -- [[ Setting keymaps ]]
 -- NOTE: See `:help vim.keymap.set()`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
