@@ -5,6 +5,7 @@
 -- See `:help vim.opt`
 vim.opt.showmode = true -- Show the active mode
 vim.opt.cursorline = true -- Highligh the current line
+vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:block-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20' -- Cursor styling
 vim.opt.number = true -- Show number lines
 vim.opt.relativenumber = true -- Show relative number line
 vim.opt.scrolloff = 10 -- Minimal number of lines to keep above/below the cursor
