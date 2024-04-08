@@ -22,6 +22,13 @@ return {
     end,
   },
 
+  -- [[ Plugin: folke/twilight.nvim ]]
+  -- NOTE: See `:help twilight.txt` or https://github.com/folke/twilight.nvim for more info
+  {
+    'folke/twilight.nvim',
+    opts = {},
+  },
+
   -- [[ Plugin: danymat/neogen ]]
   -- NOTE: See `:help neogen.txt` or https://github.com/danymat/neogen for more info
   -- {
