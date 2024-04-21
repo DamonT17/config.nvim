@@ -112,7 +112,7 @@ return {
                 return require('cmp_buffer'):compare_locality(...)
               end,
               require('copilot_cmp.comparators').prioritize, -- Custom comparator to prioritize copilot suggestions
-              -- Default nvim-cmp comparitors
+              -- Default nvim-cmp comparators
               cmp.config.compare.offset,
               -- cmp.config.compare.scopes,
               cmp.config.compare.exact,
@@ -248,13 +248,12 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    -- Enable the following language servers
     local servers = {
-      -- apex_ls = {},
+      apex_ls = {},
       clangd = {},
       cmake = {},
       csharp_ls = {},
-      -- html = {},
+      html = {},
       lua_ls = {
         settings = {
           Lua = {
