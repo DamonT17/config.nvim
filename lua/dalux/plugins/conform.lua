@@ -10,7 +10,7 @@ return {
     },
     formatters_by_ft = {
       apex = { 'prettier' },
-      cmake = { 'cmakelang' },
+      cmake = { 'cmake_format' },
       csharp = { 'csharpier' },
       css = { 'prettier' },
       cpp = { 'clang-format' },
