@@ -26,21 +26,12 @@ return {
       },
     })
 
-    -- Keybindings
-    local wk = require('which-key')
-    wk.register({
-      ['[t'] = {
-        function()
-          todo.jump_prev()
-        end,
-        'Previous [T]odo Comment',
-      },
-      [']t'] = {
-        function()
-          todo.jump_next()
-        end,
-        'Next [T]odo Comment',
-      },
-    }, { mode = 'n' })
+    -- [[ Keymaps ]]
+    vim.keymap.set('n', '[t', function()
+      todo.jump_prev()
+    end, { desc = 'Previous [T]odo Comment' })
+    vim.keymap.set('n', ']t', function()
+      todo.jump_next()
+    end, { desc = 'Next [T]odo Comment' })
   end,
 }

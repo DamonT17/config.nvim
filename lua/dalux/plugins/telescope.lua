@@ -28,79 +28,37 @@ return {
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
 
-    -- Keybindings
+    -- [[ Keymaps ]]
+    ---Maps a key sequence to a function with a description.
+    ---@param keys string Sequence of keys
+    ---@param func any Function to call
+    ---@param desc string Description of the keymap
+    local map = function(keys, func, desc)
+      vim.keymap.set('n', keys, func, { desc = desc })
+    end
+
     local builtin = require('telescope.builtin')
-    local wk = require('which-key')
-    wk.register({
-      ['s'] = {
-        name = '[S]earch',
-        ['d'] = {
-          builtin.diagnostics,
-          '[S]earch [D]iagnostics',
-        },
-        ['f'] = {
-          builtin.find_files,
-          '[S]earch [F]iles',
-        },
-        ['g'] = {
-          builtin.live_grep,
-          '[S]earch via [G]rep',
-        },
-        ['h'] = {
-          builtin.help_tags,
-          '[S]earch [H]elp',
-        },
-        ['k'] = {
-          builtin.keymaps,
-          '[S]earch [K]eymaps',
-        },
-        ['n'] = {
-          function()
-            builtin.find_files({
-              cwd = vim.fn.stdpath('config'),
-            })
-          end,
-          '[S]earch [N]eovim files',
-        },
-        ['r'] = {
-          builtin.resume,
-          '[S]earch [R]esume',
-        },
-        ['s'] = {
-          builtin.builtin,
-          '[S]earch [S]elect Telescope',
-        },
-        ['w'] = {
-          builtin.grep_string,
-          '[S]earch [W]ord',
-        },
-        ['.'] = {
-          builtin.oldfiles,
-          '[S]earch recent files ("." for repeat)',
-        },
-        ['/'] = {
-          function()
-            builtin.live_grep({
-              grep_open_files = true,
-              prompt_title = 'Live Grep in Open Files',
-            })
-          end,
-          '[S]earch [/] in open files',
-        },
-      },
-      ['<leader>'] = {
-        builtin.buffers,
-        '[ ] Find existing buffers',
-      },
-      ['/'] = {
-        function()
-          builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-            winblend = 10,
-            previewer = false,
-          }))
-        end,
-        '[/] Fuzzily search in current buffer',
-      },
-    }, { mode = 'n', prefix = '<leader>' })
+    map('<leader>sd', builtin.diagnostics, '[S]earch [D]iagnostics')
+    map('<leader>sf', builtin.find_files, '[S]earch [F]iles')
+    map('<leader>sg', builtin.live_grep, '[S]earch via [G]rep')
+    map('<leader>sh', builtin.help_tags, '[S]earch [H]elp')
+    map('<leader>sk', builtin.keymaps, '[S]earch [K]eymaps')
+    map('<leader>sn', function()
+      builtin.find_files({ cwd = vim.fn.stdpath('config') })
+    end, '[S]earch [N]eovim files')
+    map('<leader>sr', builtin.resume, '[S]earch [R]esume')
+    map('<leader>ss', builtin.builtin, '[S]earch [S]elect Telescope')
+    map('<leader>sw', builtin.grep_string, '[S]earch [W]ord')
+    map('<leader>s.', builtin.oldfiles, '[S]earch recent files')
+    map('<leader>s/', function()
+      builtin.live_grep({ grep_open_files = true, prompt_title = 'Live Grep in Open Files' })
+    end, '[S]earch open files')
+    map('<leader><space>', builtin.buffers, '[ ] Find existing buffers')
+    map('<leader>/', function()
+      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+        winblend = 10,
+        previewer = false,
+      }))
+    end, '[/] Fuzzily search current buffer')
   end,
 }

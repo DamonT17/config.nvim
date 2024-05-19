@@ -32,123 +32,75 @@ return {
         :find()
     end
 
-    -- Keymaps
-    local wk = require('which-key')
-    wk.register({
-      ['h'] = {
-        name = '[H]arpoon',
-        ['a'] = {
-          function()
-            harpoon:list():append()
-          end,
-          '[A]ppend buffer to list',
-        },
-        ['c'] = {
-          function()
-            harpoon:list():clear()
-          end,
-          '[C]lear list of buffers',
-        },
-        ['h'] = {
-          function()
-            local toggle_opts = {
-              border = 'rounded',
-              title = ' Harpoon ',
-              title_pos = 'center',
-            }
+    -- [[ Keymaps ]]
+    ---Maps a key sequence to a function with a description.
+    ---@param keys string Sequence of keys
+    ---@param func any Function to call
+    ---@param desc string Description of the keymap
+    local map = function(keys, func, desc)
+      vim.keymap.set('n', keys, func, { desc = desc })
+    end
 
-            harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
-          end,
-          '[H]arpoon menu',
-        },
-        ['n'] = {
-          function()
-            harpoon:list():next()
-          end,
-          '[N]ext buffer',
-        },
-        ['p'] = {
-          function()
-            harpoon:list():prev()
-          end,
-          '[P]revious buffer',
-        },
-        ['r'] = {
-          function()
-            harpoon:list():remove()
-          end,
-          '[R]emove buffer',
-        },
-        ['t'] = {
-          function()
-            toggle_telescope(harpoon:list())
-          end,
-          'Harpoon via [T]elescope menu',
-        },
-        ['v'] = {
-          name = '[V]ertical split open',
-          ['1'] = {
-            function()
-              harpoon:list():select(1, { vsplit = true })
-            end,
-            '[1]st buffer',
-          },
-          ['2'] = {
-            function()
-              harpoon:list():select(2, { vsplit = true })
-            end,
-            '[2]nd buffer',
-          },
-          ['3'] = {
-            function()
-              harpoon:list():select(3, { vsplit = true })
-            end,
-            '[3]rd buffer',
-          },
-          ['4'] = {
-            function()
-              harpoon:list():select(4, { vsplit = true })
-            end,
-            '[4]th buffer',
-          },
-          ['5'] = {
-            function()
-              harpoon:list():select(5, { vsplit = true })
-            end,
-            '[5]th buffer',
-          },
-        },
-        ['1'] = {
-          function()
-            harpoon:list():select(1)
-          end,
-          '[1]st buffer',
-        },
-        ['2'] = {
-          function()
-            harpoon:list():select(2)
-          end,
-          '[2]nd buffer',
-        },
-        ['3'] = {
-          function()
-            harpoon:list():select(3)
-          end,
-          '[3]rd buffer',
-        },
-        ['4'] = {
-          function()
-            harpoon:list():select(4)
-          end,
-          '[4]th buffer',
-        },
-        ['5'] = {
-          function()
-            harpoon:list():select(5)
-          end,
-          '[5]th buffer',
-        },
-      },
-    }, { mode = 'n', prefix = '<leader>' })
+    map('<leader>ha', function()
+      harpoon:list():append()
+    end, '[A]ppend buffer to list')
+    map('<leader>hc', function()
+      harpoon:list():clear()
+    end, '[C]lear list of buffers')
+    map('<leader>hh', function()
+      local toggle_opts = {
+        border = 'rounded',
+        title = ' Harpoon ',
+        title_pos = 'center',
+      }
+
+      harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
+    end, '[H]arpoon menu')
+    map('<leader>hn', function()
+      harpoon:list():next()
+    end, '[N]ext buffer')
+    map('<leader>hp', function()
+      harpoon:list():prev()
+    end, '[P]revious buffer')
+    map('<leader>hr', function()
+      harpoon:list():remove()
+    end, '[R]emove buffer')
+    map('<leader>ht', function()
+      toggle_telescope(harpoon:list())
+    end, 'Harpoon via [T]elescope menu')
+
+    -- Open buffer in horizontal split
+    map('<leader>h1', function()
+      harpoon:list():select(1)
+    end, '[1]st buffer')
+    map('<leader>h2', function()
+      harpoon:list():select(2)
+    end, '[2]nd buffer')
+    map('<leader>h3', function()
+      harpoon:list():select(3)
+    end, '[3]rd buffer')
+    map('<leader>h4', function()
+      harpoon:list():select(4)
+    end, '[4]th buffer')
+    map('<leader>h5', function()
+      harpoon:list():select(5)
+    end, '[5]th buffer')
+
+    -- Open buffer in vertical split
+    map('<leader>hv1', function()
+      harpoon:list():select(1, { vsplit = true })
+    end, '[1]st buffer')
+    map('<leader>hv2', function()
+      harpoon:list():select(2, { vsplit = true })
+    end, '[2]nd buffer')
+    map('<leader>hv3', function()
+      harpoon:list():select(3, { vsplit = true })
+    end, '[3]rd buffer')
+    map('<leader>hv4', function()
+      harpoon:list():select(4, { vsplit = true })
+    end, '[4]th buffer')
+    map('<leader>hv5', function()
+      harpoon:list():select(5, { vsplit = true })
+    end, '[5]th buffer')
   end,
 }

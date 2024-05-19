@@ -30,7 +30,7 @@ vim.opt.smartcase = true -- Override 'ignorecase' if \C or capital in search
 vim.opt.wildmode = 'list:longest,list:full' -- Command-line completion mode
 
 vim.opt.list = true -- Display of whitespace in the editor
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { eol = '↲', tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.opt.timeoutlen = 300 -- Time to wait for a mapped sequence to complete
 vim.opt.updatetime = 500 -- Faster completion
