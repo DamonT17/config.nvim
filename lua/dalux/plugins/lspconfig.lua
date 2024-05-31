@@ -274,7 +274,6 @@ return {
         },
       },
       pyright = {},
-      -- racket_langserver = {},
       rust_analyzer = {},
     }
 

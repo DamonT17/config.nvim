@@ -17,6 +17,7 @@ return {
         'cpp',
         'c_sharp',
         'cmake',
+        'doxygen',
         'html',
         'lua',
         'markdown',

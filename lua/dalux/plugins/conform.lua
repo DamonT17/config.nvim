@@ -1,6 +1,7 @@
 return {
   -- [[ Plugin: stevearc/conform.nvim ]]
   -- NOTE: See `:help conform.txt` or https://github.com/stevearc/conform.nvim for more info
+  -- Run `:ConformInfo` to view configured and available formatters, as well as to see the log file
   'stevearc/conform.nvim',
   opts = {
     notify_on_error = false,
