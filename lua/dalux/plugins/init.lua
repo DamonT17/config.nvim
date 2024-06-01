@@ -10,7 +10,7 @@ return {
 
   -- [[ Plugin: Mini.nvim modules ]]
   -- Collection of various small independent plugins/modules
-  -- NOTE: See `:help mini-###.txt` for more info on any mini module (e.g., `:help mini-ai.txt`)
+  -- NOTE: See `:help mini-<module>.txt` for more info on any mini module (e.g., `:help mini-ai.txt`)
   {
     'echasnovski/mini.nvim',
     config = function()
@@ -29,28 +29,22 @@ return {
     opts = {},
   },
 
-  -- [[ Plugin: danymat/neogen ]]
-  -- NOTE: See `:help neogen.txt` or https://github.com/danymat/neogen for more info
-  -- {
-  --   'danymat/neogen',
-  --   version = '*',
-  --   config = function()
-  --     local neogen = require('neogen')
-  --     neogen.setup({
-  --       snippet_engine = 'luasnip',
-  --     })
-  --
-  --     -- [[ Neogen keymaps ]]
-  --     local wk = require('which-key')
-  --     wk.register({
-  --       ['n'] = {
-  --         name = '[N]eogen',
-  --         ['g'] = {
-  --           neogen.generate(),
-  --           '[G]enerate annotations',
-  --         },
-  --       },
-  --     }, { mode = 'n', prefix = '<leader>' })
-  --   end,
-  -- },
+  -- [[ Plugin: folke/zen-mode.nvim ]]
+  -- NOTE: See `:help zen-mode.nvim.txt` or https://github.com/folke/zen-mode.nvim for more info
+  {
+    'folke/zen-mode.nvim',
+    opts = {
+      border = 'rounded', -- Custom mod to zen-mode.nvim per changes in https://github.com/folke/zen-mode.nvim/pull/80
+      window = {
+        backdrop = 0.95,
+        width = 120,
+        height = 40,
+      },
+    },
+
+    -- [[ Keymaps ]]
+    vim.keymap.set('n', '<leader>z', function()
+      require('zen-mode').toggle({})
+    end, { desc = '[Z]en Mode' }),
+  },
 }

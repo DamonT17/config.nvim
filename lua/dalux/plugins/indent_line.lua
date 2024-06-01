@@ -3,5 +3,9 @@ return {
   -- NOTE: See `:help indent_blankline.txt` or https://github.com/lukas-reineke/indent-blankline.nvim
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
-  opts = {},
+  config = function()
+    require('indent_blankline').setup({
+      filetype_exclude = { 'dashboard' },
+    })
+  end,
 }
