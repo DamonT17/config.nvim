@@ -15,11 +15,9 @@ return {
           limit = 5,
           label = 'Projects',
           icon = '  ',
-          -- List 5 latest used directories
           action = function()
-            require('telescope.builtin').file_browser({
-              cwd = require('telescope.utils').buffer_dir(),
-            })
+            -- Open selected directory using oil.nvim floating window
+            require('oil').open_float()
           end,
         },
         mru = {
