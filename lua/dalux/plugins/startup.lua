@@ -23,10 +23,14 @@ return {
           end,
         },
         mru = {
-          limit = 5,
+          limit = 10,
           label = 'Recent Files',
           icon = '  ',
           cwd_only = false,
+        },
+        footer = {
+          '',
+          "  It's not a bug; it's an undocumented feature.",
         },
       },
     })
