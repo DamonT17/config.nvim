@@ -42,7 +42,7 @@ return {
     end
 
     map('<leader>ha', function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, '[A]ppend buffer to list')
     map('<leader>hc', function()
       harpoon:list():clear()
