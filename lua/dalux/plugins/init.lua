@@ -37,7 +37,7 @@ return {
       border = 'rounded', -- Custom mod to zen-mode.nvim per changes in https://github.com/folke/zen-mode.nvim/pull/80
       window = {
         backdrop = 0.95,
-        width = 120,
+        width = 130,
         height = 40,
       },
     },
