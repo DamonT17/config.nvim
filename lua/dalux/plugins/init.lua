@@ -47,4 +47,11 @@ return {
       require('zen-mode').toggle({})
     end, { desc = '[Z]en Mode' }),
   },
+
+  -- [[ Plugin: benfowler/telescope-luasnip.nvim ]]
+  -- NOTE: See `:help telescope-luasnip.txt` or https://github.com/benfowler/telescope-luasnip.nvim for more info
+  {
+    'benfowler/telescope-luasnip.nvim',
+    module = 'telescope._extensions.luasnip',
+  },
 }

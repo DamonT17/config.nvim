@@ -45,8 +45,9 @@ return {
 
             -- Snippet extensions
             local ls = require('luasnip')
-            ls.filetype_extend('csharp', { 'unity' })
-            ls.filetype_extend('cpp', { 'unreal' })
+            ls.filetype_extend('cpp', { 'cppdoc', 'unreal' })
+            ls.filetype_extend('csharp', { 'csharpdoc', 'unity' })
+            ls.filetype_extend('lua', { 'luadoc' })
             ls.filetype_extend('ruby', { 'rails' })
           end,
         },

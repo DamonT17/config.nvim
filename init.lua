@@ -38,6 +38,7 @@ require('lazy').setup('dalux.plugins', {
   change_detection = {
     notify = false,
   },
+  checker = { enable = true },
   ui = {
     border = 'rounded',
     title = ' Lazy Plugin Manager ',

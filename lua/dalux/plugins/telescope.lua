@@ -17,7 +17,25 @@ return {
   },
   config = function()
     require('telescope').setup({
+      defaults = {
+        layout_strategy = 'horizontal',
+        layout_config = {
+          horizontal = {
+            height = 42, -- Previewer shows first 40 lines plus border
+            preview_width = 120, -- Previewer shows 120 columns
+          },
+        },
+        winblend = 10,
+      },
+      pickers = {
+        diagnostics = {
+          theme = 'dropdown',
+        },
+      },
       extensions = {
+        ['luasnip'] = {
+          require('telescope.themes').get_dropdown(),
+        },
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
@@ -26,6 +44,7 @@ return {
 
     -- Enable telescope extensions, if installed
     pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'luasnip')
     pcall(require('telescope').load_extension, 'ui-select')
 
     -- [[ Keymaps ]]
@@ -38,11 +57,20 @@ return {
     end
 
     local builtin = require('telescope.builtin')
-    map('<leader>sd', builtin.diagnostics, '[S]earch [D]iagnostics')
+    map('<leader>sd', function()
+      builtin.diagnostics(require('telescope.themes').get_dropdown({
+        layout_config = {
+          width = 120,
+        },
+      }))
+    end, '[S]earch [D]iagnostics')
     map('<leader>sf', builtin.find_files, '[S]earch [F]iles')
     map('<leader>sg', builtin.live_grep, '[S]earch via [G]rep')
     map('<leader>sh', builtin.help_tags, '[S]earch [H]elp')
     map('<leader>sk', builtin.keymaps, '[S]earch [K]eymaps')
+    map('<leader>sl', function()
+      require('telescope').extensions.luasnip.luasnip()
+    end, '[S]earch [L]uasnip')
     map('<leader>sn', function()
       builtin.find_files({ cwd = vim.fn.stdpath('config') })
     end, '[S]earch [N]eovim files')
@@ -56,8 +84,8 @@ return {
     map('<leader><space>', builtin.buffers, '[ ] Find existing buffers')
     map('<leader>/', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-        winblend = 10,
         previewer = false,
+        winblend = 10,
       }))
     end, '[/] Fuzzily search current buffer')
   end,
