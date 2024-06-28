@@ -8,6 +8,8 @@ return {
       columns = { 'icon' },
       keymaps = {
         ['<C-h>'] = false,
+        ['<C-l>'] = false,
+        ['<C-r>'] = 'actions.refresh',
       },
       view_options = {
         show_hidden = true,
