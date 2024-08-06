@@ -13,9 +13,13 @@ return {
   -- NOTE: See `:help mini-<module>.txt` for more info on any mini module (e.g., `:help mini-ai.txt`)
   {
     'echasnovski/mini.nvim',
+    version = false,
     config = function()
       -- Better Around/Inside text objects
       require('mini.ai').setup({ n_lines = 500 })
+
+      -- Additional icons
+      require('mini.icons').setup()
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       require('mini.surround').setup()

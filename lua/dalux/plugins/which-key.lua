@@ -3,31 +3,31 @@ return {
   -- NOTE: See `:help which-key.nvim.txt` or https://github.com/folke/which-key.nvim for more info
   'folke/which-key.nvim',
   event = 'VeryLazy',
-  config = function()
-    require('which-key').setup({
-      window = {
-        border = 'rounded',
+  opts = {
+    preset = 'modern',
+    win = {
+      wo = {
         winblend = 10,
       },
-      layout = {
-        height = { min = 5, max = 20 }, -- min & max height of the columns
-        width = { min = 20, max = 50 }, -- min & max width of the columns
-        spacing = 2, -- spacing between columns
-        align = 'center',
+    },
+    layout = {
+      align = 'center',
+    },
+    icons = {
+      keys = {
+        BS = '󰁮 ',
       },
-    })
-
-    -- Document existing key chains
-    require('which-key').register({
-      ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-      ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-      ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-      ['<leader>gt'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-      ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-      ['<leader>hv'] = { name = '[V]ertical split open', _ = 'which_key_ignore' },
-      ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-      ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-      ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-    })
-  end,
+    },
+    spec = {
+      { '<leader>c', group = '[C]ode' },
+      { '<leader>d', group = '[D]ocument' },
+      { '<leader>g', group = '[G]it', icon = { icon = '󰊢 ', hl = 'MiniIconsOrange' } },
+      { '<leader>gt', group = '[T]oggle' },
+      { '<leader>h', group = '[H]arpoon' },
+      { '<leader>hv', group = '[V]ertical split open' },
+      { '<leader>r', group = '[R]ename' },
+      { '<leader>s', group = '[S]earch' },
+      { '<leader>w', group = '[W]orkspace' },
+    },
+  },
 }
