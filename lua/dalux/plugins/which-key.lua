@@ -6,12 +6,15 @@ return {
   opts = {
     preset = 'modern',
     win = {
+      width = { min = 0.15, max = 0.5 },
+      height = { min = 4, max = 25 },
       wo = {
         winblend = 10,
       },
     },
     layout = {
-      align = 'center',
+      -- width = { min = 20, max = 50 },
+      spacing = 3,
     },
     icons = {
       keys = {
@@ -19,15 +22,23 @@ return {
       },
     },
     spec = {
-      { '<leader>c', group = '[C]ode' },
-      { '<leader>d', group = '[D]ocument' },
+      { '<leader>b', group = '[B]uffer', icon = { icon = '󰈙 ', hl = 'MiniIconsAzure' } },
+      { '<leader>c', group = '[C]ode', icon = { icon = ' ', hl = 'MiniIconsOrange' } },
+      { '<leader>d', group = '[D]iagnostics', icon = { icon = '󱖫 ', hl = 'MiniIconsRed' } },
+      { '<leader>de', vim.diagnostic.open_float, desc = '[E]rrors', icon = { icon = ' ', hl = 'MiniIconsRed' } },
+      {
+        '<leader>dq',
+        vim.diagnostic.setloclist,
+        desc = '[Q]uickfix',
+        icon = { icon = ' ', hl = 'MiniIconsYellow' },
+      },
       { '<leader>g', group = '[G]it', icon = { icon = '󰊢 ', hl = 'MiniIconsOrange' } },
-      { '<leader>gt', group = '[T]oggle' },
-      { '<leader>h', group = '[H]arpoon' },
-      { '<leader>hv', group = '[V]ertical split open' },
-      { '<leader>r', group = '[R]ename' },
-      { '<leader>s', group = '[S]earch' },
-      { '<leader>w', group = '[W]orkspace' },
+      { '<leader>gt', group = '[T]oggle', icon = { icon = ' ', hl = 'MiniIconsOrange' } },
+      { '<leader>h', group = '[H]arpoon', icon = { icon = '󱡀', hl = 'MiniIconsCyan' } },
+      { '<leader>hv', group = '[V]ertical split open', icon = { icon = '󰯌 ', hl = 'MiniIconsPurple' } },
+      { '<leader>r', group = '[R]ename', icon = { icon = '󰑕 ', hl = 'MiniIconsYellow' } },
+      { '<leader>s', group = '[S]earch', icon = { icon = ' ', hl = 'MiniIconsGreen' } },
+      { '<leader>w', group = '[W]orkspace', icon = { icon = ' ', hl = 'MiniIconsAzure' } },
     },
   },
 }

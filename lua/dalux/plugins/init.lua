@@ -45,11 +45,15 @@ return {
         height = 40,
       },
     },
-
-    -- [[ Keymaps ]]
-    vim.keymap.set('n', '<leader>z', function()
-      require('zen-mode').toggle({})
-    end, { desc = '[Z]en Mode' }),
+    keys = {
+      {
+        '<leader>z',
+        function()
+          require('zen-mode').toggle({})
+        end,
+        desc = '[Z]en Mode',
+      },
+    },
   },
 
   -- [[ Plugin: benfowler/telescope-luasnip.nvim ]]
