@@ -23,6 +23,7 @@ return {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
+        'onsails/lspkind-nvim',
 
         -- [[ Plugin: L3MON4D3/LuaSnip ]]
         -- NOTE: See `:help luasnip.txt` or https://L3MON4D3/LuaSnip for more info
@@ -58,9 +59,17 @@ return {
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
         cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
+        local lspkind = require('lspkind')
+        lspkind.init({
+          symbol_map = {
+            Copilot = '',
+          },
+        })
         local luasnip = require('luasnip')
         luasnip.config.setup({})
 
+        -- NOTE: Uncomment and implement with <Tab> if functionality desired
+        --
         --local has_words_before = function()
         --  if vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt' then
         --    return false
@@ -71,6 +80,24 @@ return {
         --end
 
         cmp.setup({
+          completion = { completeopt = 'menu,menuone,noinsert,noselect' },
+          experimental = {
+            ghost_text = false,
+          },
+          formatting = {
+            format = function(entry, vim_item)
+              if vim.tbl_contains({ 'path' }, entry.source.name) then
+                local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+                if icon then
+                  vim_item.kind = icon
+                  vim_item.kind_hl_group = hl_group
+                  return vim_item
+                end
+              end
+
+              return lspkind.cmp_format({ with_text = false })(entry, vim_item)
+            end,
+          },
           snippet = {
             expand = function(args)
               luasnip.lsp_expand(args.body)
@@ -80,10 +107,9 @@ return {
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
           },
-          experimental = {
-            ghost_text = false,
+          view = {
+            entries = { name = 'custom', selection_order = 'near_cursor' },
           },
-          completion = { completeopt = 'menu,menuone,noinsert,noselect' },
 
           -- NOTE: See `:help ins-completion`
           mapping = cmp.mapping.preset.insert({
