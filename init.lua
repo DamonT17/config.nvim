@@ -29,12 +29,12 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- [[ Setting options, keymaps, commands ]]
-require('dalux.options')
-require('dalux.keymaps')
-require('dalux.commands')
+require('custom.options')
+require('custom.keymaps')
+require('custom.commands')
 
 -- [[ Configure and install plugins ]]
-require('lazy').setup('dalux.plugins', {
+require('lazy').setup('custom.plugins', {
   change_detection = {
     notify = false,
   },
