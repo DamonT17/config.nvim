@@ -61,6 +61,13 @@ return {
     }
     dap.configurations.c = dap.configurations.cpp
 
+    -- [[ Signs configuration ]]
+    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'Error', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'WarningMsg', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'MoreMsg', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapStopped', { text = '', texthl = 'Title', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'ErrorMsg', linehl = '', numhl = '' })
+
     -- [[ Keymaps ]]
     ---Maps a key sequence to a function with a description.
     ---@param keys string Sequence of keys
@@ -75,9 +82,9 @@ return {
     map('<F2>', dap.step_over, 'Debug: Step Over')
     map('<F3>', dap.step_out, 'Debug: Step Out')
     map('<F7>', dapui.toggle, 'Debug: See last session result')
-    map('<leader>b', dap.toggle_breakpoint, 'Debug: Toggle [B]reakpoint')
-    map('<leader>B', function()
-      dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+    map('<leader>p', dap.toggle_breakpoint, 'Debug: Toggle Break[p]oint')
+    map('<leader>P', function()
+      dap.set_breakpoint(vim.fn.input('Break[p]oint condition: '))
     end, 'Debug: Set [B]reakpoint')
   end,
 }
