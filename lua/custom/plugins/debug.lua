@@ -34,7 +34,7 @@ return {
 
     -- Configure adapters
     dap.adapters.codelldb = {
-      tye = 'executable',
+      type = 'executable',
       command = 'codelldb',
     }
 
@@ -50,13 +50,6 @@ return {
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
         args = {},
-        env = function()
-          local variables = {}
-          for k, v in pairs(vim.fn.environ()) do
-            table.insert(variables, string.format('%s=%s', k, v))
-          end
-          return variables
-        end,
       },
     }
     dap.configurations.c = dap.configurations.cpp

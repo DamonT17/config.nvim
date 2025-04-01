@@ -12,6 +12,10 @@ return {
         winblend = 10,
       },
     },
+    keys = {
+      scroll_down = '<C-f>',
+      scroll_up = '<C-b>',
+    },
     layout = {
       -- width = { min = 20, max = 50 },
       spacing = 3,
