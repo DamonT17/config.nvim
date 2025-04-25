@@ -277,7 +277,12 @@ return {
 
     local servers = {
       apex_ls = {},
-      clangd = {},
+      clangd = {
+        cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+        init_options = {
+          fallbackFlags = { '-std=c++17' },
+        },
+      },
       cmake = {},
       csharp_ls = {},
       html = {},
