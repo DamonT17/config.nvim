@@ -305,6 +305,7 @@ return {
           },
         },
       },
+      marksman = {},
       pyright = {},
       rust_analyzer = {},
     }
