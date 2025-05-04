@@ -25,11 +25,6 @@ return {
             preview_width = 120, -- Previewer shows 120 columns
           },
         },
-        mappings = {
-          i = {
-            ['<CR>'] = 'file_vsplit',
-          },
-        },
         winblend = 10,
       },
       pickers = {

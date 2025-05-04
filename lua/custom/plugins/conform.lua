@@ -7,7 +7,7 @@ return {
     notify_on_error = false,
     format_on_save = {
       timeout_ms = 500,
-      lsp_fallback = true,
+      lsp_format = 'fallback',
     },
     formatters_by_ft = {
       apex = { 'prettier' },
@@ -19,7 +19,7 @@ return {
       javascript = { 'biome' },
       json = { 'biome' },
       lua = { 'stylua' },
-      python = { 'black' },
+      python = { 'darker', 'black' },
       yaml = { 'prettier' },
       ['*'] = { 'codespell' }, -- Formatter for all filetypes
       ['_'] = { 'trim_whitespace', 'trim_newlines', 'squeeze_blanks' }, -- Formatter(s) on filetypes w/o a formatter
