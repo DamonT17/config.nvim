@@ -6,8 +6,8 @@ return {
   dependencies = {
     -- LSP package manager for Neovim
     -- NOTE: See `:help mason.txt` or https://github.com/williamboman/mason.nvim for more info
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- [[ Plugin: hrsh7th/nvim-cmp ]]
@@ -193,16 +193,6 @@ return {
       },
     })
 
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = 'rounded',
-      focusable = true,
-    })
-
-    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = 'rounded',
-      focusable = true,
-    })
-
     -- This function runs when an LSP attaches to a particular buffer
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -248,7 +238,13 @@ return {
 
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap
-        map('K', vim.lsp.buf.hover, 'Hover Documentation')
+        map('K', function()
+          vim.lsp.buf.hover({ border = 'rounded', focusable = true })
+        end, 'Hover Documentation')
+
+        map('<C-k>', function()
+          vim.lsp.buf.signature_help({ border = 'rounded', focusable = true })
+        end, 'Signature Help')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
