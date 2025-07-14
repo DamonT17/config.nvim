@@ -4,16 +4,25 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    -- LSP package manager for Neovim
-    -- NOTE: See `:help mason.txt` or https://github.com/williamboman/mason.nvim for more info
     'mason-org/mason.nvim',
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-    -- [[ Plugin: hrsh7th/nvim-cmp ]]
-    -- NOTE: See `:help cmp.txt` or https://github.com/hrsh7th/nvim-cmp for more info
-    -- Auto-completion engine for Neovim
     {
+      -- [[ Plugin: folke/lazydev.nvim ]]
+      -- NOTE: See `:help lazydev.nvim.txt` or https://github.com/folke/lazydev.nvim for more info
+      -- Configures LuaLS for editing Neovim configuration files
+      'folke/lazydev.nvim',
+      ft = 'lua', -- Only load for Lua files
+      opts = {
+        library = {
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        },
+      },
+    },
+    {
+      -- [[ Plugin: hrsh7th/nvim-cmp ]]
+      -- NOTE: See `:help cmp.txt` or https://github.com/hrsh7th/nvim-cmp for more info
+      -- Auto-completion engine for Neovim
       'hrsh7th/nvim-cmp',
       event = 'InsertEnter',
       dependencies = {
@@ -158,6 +167,7 @@ return {
             { name = 'buffer', group_index = 2 },
             { name = 'copilot', group_index = 2 },
             { name = 'luasnip', group_index = 2 },
+            { name = 'lazydev', group_index = 2 },
           },
         })
 
@@ -252,7 +262,7 @@ return {
         -- Autocommands that are used to highlight references of the word under your cursor rests for a little while
         --  When the cursor moves, the highlights will be cleared (2nd autocommand)
         -- NOTE: See `:help CursorHold` and `:help CursorMoved` for information about when this is executed
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        local client = vim.lsp.get_clients({ id = event.data.client_id })[1]
         if client and client.server_capabilities.documentHighlightProvider then
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
@@ -282,25 +292,7 @@ return {
       cmake = {},
       csharp_ls = {},
       html = {},
-      lua_ls = {
-        settings = {
-          Lua = {
-            runtime = { version = 'LuaJit' },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                vim.env.VIMRUNTIME,
-                '${3rd}/luv/library',
-                -- unpack(vim.api.nvim_get_runtime_file('', true)),
-              },
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
-      },
+      lua_ls = {},
       marksman = {},
       pyright = {},
       rust_analyzer = {},
