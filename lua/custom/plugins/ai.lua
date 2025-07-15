@@ -28,4 +28,15 @@ return {
     -- NOTE: See https://github.com/AndrewM222/copilot-lualine for more info
     'AndreM222/copilot-lualine',
   },
+  {
+    -- [[ Plugin: CopilotC-Nvim/CopilotChat ]]
+    -- NOTE: See `:help CopilotChat.txt` or https://github.com/CopilotC-Nvim/CopilotChat.nvim for more info
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' },
+      { 'nvim-lua/plenary.nvim', branch = 'master' },
+    },
+    -- build = 'make tiktoken' -- Only on MacOS or Linux
+    opts = {},
+  },
 }
