@@ -252,7 +252,7 @@ return {
           vim.lsp.buf.hover({ border = 'rounded', focusable = true })
         end, 'Hover Documentation')
 
-        map('K', function()
+        map('<C-k>', function()
           vim.lsp.buf.signature_help({ border = 'rounded', focusable = true })
         end, 'Signature Help')
 

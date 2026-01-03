@@ -44,3 +44,5 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.mouse = 'a' -- Enable mouse support
+
+vim.opt.winborder = 'rounded' -- Set window border style

@@ -19,7 +19,7 @@ return {
       },
       integrations = {
         cmp = true,
-        fidget = false,
+        fidget = true,
         gitsigns = true,
         harpoon = false,
         mason = false,
