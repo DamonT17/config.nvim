@@ -252,9 +252,9 @@ return {
           vim.lsp.buf.hover({ border = 'rounded', focusable = true })
         end, 'Hover Documentation')
 
-        map('<C-k>', function()
+        map('<leader>cs', function()
           vim.lsp.buf.signature_help({ border = 'rounded', focusable = true })
-        end, 'Signature Help')
+        end, '[Code] [S]ignature Help')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
