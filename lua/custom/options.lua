@@ -46,3 +46,15 @@ vim.opt.splitbelow = true
 vim.opt.mouse = 'a' -- Enable mouse support
 
 vim.opt.winborder = 'rounded' -- Set window border style
+
+-- Folding configuration
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevelstart = 99
+vim.opt.foldcolumn = 'auto'
+vim.opt.fillchars = {
+  fold = ' ',
+  foldopen = '',
+  foldsep = ' ',
+  foldclose = '',
+}

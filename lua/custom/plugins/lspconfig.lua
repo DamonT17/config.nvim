@@ -139,6 +139,11 @@ return {
                 luasnip.jump(-1)
               end
             end, { 'i', 's' }),
+            ['<C-k>'] = cmp.mapping(function() -- Selecting from a list of options (i.e., choice nodes))
+              if luasnip.choice_active() then
+                luasnip.change_choice(1)
+              end
+            end, { 'i' }),
           }),
           sorting = {
             priority_weight = 2,

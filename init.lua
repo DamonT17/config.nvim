@@ -54,3 +54,6 @@ require('lazy').setup('custom.plugins', {
     title_pos = 'center',
   },
 })
+
+-- [[ Custom snippets ]]
+require('luasnip.loaders.from_lua').lazy_load({ paths = '~/.config/nvim/lua/snippets/' })
