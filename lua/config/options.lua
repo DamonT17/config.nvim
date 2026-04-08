@@ -13,7 +13,6 @@ vim.opt.inccommand = 'split' -- Preview substitutions as you type
 vim.opt.hlsearch = true -- Set highlight on search, clear on pressing <Esc> in normal mode
 vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim
 vim.opt.history = 500 -- Remember n lines in history
-vim.opt.lazyredraw = true -- Don't redraw while executing macro
 vim.opt.signcolumn = 'yes:1' -- Keep signcolumn on by defaults
 vim.opt.colorcolumn = '121' -- Show a column at 121 characters
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert', 'preview' } -- Completion options

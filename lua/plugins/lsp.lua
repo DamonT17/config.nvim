@@ -20,19 +20,22 @@ return {
     --- NOTE: See `:help mason-lspconfig.nvim` or https://github.com/mason-org/mason-lspconfig.nvim for more info
     'mason-org/mason-lspconfig.nvim',
     dependencies = { 'mason-org/mason.nvim', 'neovim/nvim-lspconfig' },
-    opts = {
-      ensure_installed = {
-        'bashls',
-        'clangd',
-        'cmake',
-        'copilot',
-        'html',
-        'lua_ls',
-        'marksman',
-        'pyright',
-        'stylua',
-      },
-    },
+    config = function()
+      require('mason-lspconfig').setup({
+        ensure_installed = {
+          'bashls',
+          'clangd',
+          'cmake',
+          'html',
+          'lua_ls',
+          'marksman',
+          'pyright',
+          'stylua',
+        },
+      })
+      -- csharp_ls is installed via dotnet tools, not Mason
+      vim.lsp.enable('csharp_ls')
+    end,
   },
   {
     ---@package saghen/blink.cmp
@@ -83,7 +86,7 @@ return {
             border = 'rounded',
           },
         },
-        ghost_text = { enabled = true },
+        ghost_text = { enabled = false },
         menu = {
           direction_priority = { 'n', 's' },
           draw = {
@@ -155,6 +158,7 @@ return {
       },
       keymap = {
         preset = 'default',
+        ['<C-q>'] = { 'show', 'fallback' },
         -- ['<Tab>'] = {
         --   'snippet_forward',
         --   function() -- sidekick next edit suggestion

@@ -56,30 +56,30 @@ return {
         end, 'Next [H]unk')
 
         -- Normal mode keymaps
-        map('n', '<leader>gb', function()
+        map('n', '<leader>vb', function()
           gs.blame_line({ full = true })
         end, '[B]lame line')
-        map('n', '<leader>gd', gs.diffthis, '[D]iff this')
-        map('n', '<leader>gD', function()
+        map('n', '<leader>vd', gs.diffthis, '[D]iff this')
+        map('n', '<leader>vD', function()
           gs.diffthis('~')
         end, '[D]iff this (~)')
-        map('n', '<leader>gp', gs.preview_hunk, '[P]review hunk')
-        map('n', '<leader>gr', gs.reset_hunk, '[R]eset hunk')
-        map('n', '<leader>gR', gs.reset_buffer, '[R]eset buffer')
-        map('n', '<leader>gs', gs.stage_hunk, '[S]tage hunk')
-        map('n', '<leader>gS', gs.stage_buffer, '[S]tage buffer')
+        map('n', '<leader>vp', gs.preview_hunk, '[P]review hunk')
+        map('n', '<leader>vr', gs.reset_hunk, '[R]eset hunk')
+        map('n', '<leader>vR', gs.reset_buffer, '[R]eset buffer')
+        map('n', '<leader>vs', gs.stage_hunk, '[S]tage hunk')
+        map('n', '<leader>vS', gs.stage_buffer, '[S]tage buffer')
         map('n', '<leader>gtb', gs.toggle_current_line_blame, 'Toggle [B]lame')
         map('n', '<leader>gtd', gs.toggle_deleted, 'Toggle [D]eleted')
-        map('n', '<leader>gu', gs.undo_stage_hunk, '[U]ndo stage hunk')
+        map('n', '<leader>vu', gs.undo_stage_hunk, '[U]ndo stage hunk')
 
         -- Visual mode keymaps
-        map('v', '<leader>gr', function()
+        map('v', '<leader>vr', function()
           gs.reset_hunk({
             vim.fn.line('.'),
             vim.fn.line('v'),
           })
         end, '[R]eset hunk')
-        map('v', '<leader>gs', function()
+        map('v', '<leader>vs', function()
           gs.stage_hunk({
             vim.fn.line('.'),
             vim.fn.line('v'),
