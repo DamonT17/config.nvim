@@ -10,7 +10,6 @@ return {
       lsp_format = 'fallback',
     },
     formatters_by_ft = {
-      apex = { 'prettier' },
       cmake = { 'cmake_format' },
       csharp = { 'csharpier' },
       css = { 'prettier' },

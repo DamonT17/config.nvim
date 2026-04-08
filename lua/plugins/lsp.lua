@@ -26,7 +26,6 @@ return {
         'clangd',
         'cmake',
         'copilot',
-        'csharp_ls',
         'html',
         'lua_ls',
         'marksman',
