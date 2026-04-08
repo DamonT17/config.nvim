@@ -1,5 +1,13 @@
 --- Neovim custom commands
 
+-- [[ LSP notification filter ]]
+-- Only surface LSP errors as pop-up notifications; warnings/info/log are too noisy
+vim.lsp.handlers['window/showMessage'] = function(_, result)
+  if result.type == vim.lsp.protocol.MessageType.Error then
+    vim.notify(result.message, vim.log.levels.ERROR, { title = 'LSP' })
+  end
+end
+
 -- [[ Basic Autocommands ]]
 -- NOTE: See `:help lua-guide-autocommands`
 

@@ -75,13 +75,11 @@ return {
       builtin.find_files({ cwd = vim.fn.stdpath('config') })
     end, '[S]earch [N]eovim files')
     map('<leader>sr', builtin.resume, '[S]earch [R]esume')
-    map('<leader>ss', builtin.builtin, '[S]earch [S]elect Telescope')
     map('<leader>sw', builtin.grep_string, '[S]earch [W]ord')
     map('<leader>s.', builtin.oldfiles, '[S]earch recent files')
     map('<leader>s/', function()
       builtin.live_grep({ grep_open_files = true, prompt_title = 'Live Grep in Open Files' })
     end, '[S]earch open files')
-    map('<leader><space>', builtin.buffers, '[ ] Find existing buffers')
     map('<leader>/', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
         previewer = false,

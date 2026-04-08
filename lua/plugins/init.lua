@@ -79,13 +79,6 @@ return {
         desc = 'Buffers',
       },
       {
-        '<leader>/',
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = 'Grep',
-      },
-      {
         '<leader>:',
         function()
           Snacks.picker.command_history()
@@ -243,21 +236,6 @@ return {
         end,
         desc = 'Grep Open Buffers',
       },
-      {
-        '<leader>sg',
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = 'Grep',
-      },
-      {
-        '<leader>sw',
-        function()
-          Snacks.picker.grep_word()
-        end,
-        desc = 'Visual selection or word',
-        mode = { 'n', 'x' },
-      },
       -- search
       {
         '<leader>s"',
@@ -302,25 +280,11 @@ return {
         desc = 'Commands',
       },
       {
-        '<leader>sd',
-        function()
-          Snacks.picker.diagnostics()
-        end,
-        desc = 'Diagnostics',
-      },
-      {
         '<leader>sD',
         function()
           Snacks.picker.diagnostics_buffer()
         end,
         desc = 'Buffer Diagnostics',
-      },
-      {
-        '<leader>sh',
-        function()
-          Snacks.picker.help()
-        end,
-        desc = 'Help Pages',
       },
       {
         '<leader>sH',
@@ -342,13 +306,6 @@ return {
           Snacks.picker.jumps()
         end,
         desc = 'Jumps',
-      },
-      {
-        '<leader>sk',
-        function()
-          Snacks.picker.keymaps()
-        end,
-        desc = 'Keymaps',
       },
       {
         '<leader>sl',
@@ -501,13 +458,6 @@ return {
         desc = 'Select Scratch Buffer',
       },
       {
-        '<leader>n',
-        function()
-          Snacks.notifier.show_history()
-        end,
-        desc = 'Notification History',
-      },
-      {
         '<leader>bd',
         function()
           Snacks.bufdelete()
@@ -605,13 +555,7 @@ return {
           end
 
           -- Override print to use snacks for `:=` command
-          if vim.fn.has('nvim-0.11') == 1 then
-            vim._print = function(_, ...)
-              dd(...)
-            end
-          else
-            vim.print = _G.dd
-          end
+          vim.print = _G.dd
 
           -- Create some toggle mappings
           Snacks.toggle.option('spell', { name = 'Spelling' }):map('<leader>us')
@@ -685,15 +629,6 @@ return {
     },
     config = function(_, opts)
       require('mini.ai').setup(opts)
-    end,
-  },
-  {
-    ---@package nvim-mini/mini.comment
-    ---NOTE: See `:help mini.comment` or https://github.com/nvim-mini/mini.comment for more info
-    'nvim-mini/mini.comment',
-    version = false,
-    config = function()
-      require('mini.comment').setup()
     end,
   },
   {

@@ -5,7 +5,7 @@ return {
   dependencies = { 'nvim-mini/mini.icons' },
   opts = {
     options = {
-      theme = 'catppuccin',
+      theme = 'catppuccin-nvim',
     },
     sections = {
       lualine_c = {
