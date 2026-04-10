@@ -27,6 +27,13 @@ return {
           enabled = true,
           backend = 'tmux',
         },
+        win = {
+          -- Open vertically (right) when wide enough for 120-char code + 80-char panel,
+          -- otherwise open horizontally (bottom) for portrait/laptop layouts.
+          config = function(terminal)
+            terminal.opts.layout = vim.o.columns >= 200 and 'right' or 'bottom'
+          end,
+        },
       },
     },
     keys = {
@@ -103,14 +110,6 @@ return {
         mode = { 'n', 'x' },
         desc = 'Sidekick Select Prompt',
       },
-      -- Example of a keybinding to open Claude directly
-      -- {
-      --   '<leader>ac',
-      --   function()
-      --     require('sidekick.cli').toggle({ name = 'claude', focus = true })
-      --   end,
-      --   desc = 'Sidekick Toggle Claude',
-      -- },
     },
   },
 }
