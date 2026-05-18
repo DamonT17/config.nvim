@@ -29,6 +29,63 @@ local function read_lines(path)
   return lines
 end
 
+-- Helper function to detect the license type from a LICENSE file in the project root.
+local function get_license_type()
+  local cwd = vim.fn.expand('%:p:h')
+
+  while cwd ~= '/' do
+    for _, name in ipairs({ 'LICENSE', 'LICENSE.txt', 'LICENSE.md', 'LICENCE', 'LICENCE.txt' }) do
+      local path = cwd .. '/' .. name
+      if vim.fn.filereadable(path) == 1 then
+        local lines = read_lines(path)
+        local header = {}
+        for idx = 1, math.min(5, #lines) do
+          table.insert(header, lines[idx]:lower())
+        end
+        local content = table.concat(header, ' ')
+
+        if content:find('mit license') then
+          return 'MIT'
+        elseif content:find('apache license') then
+          return content:find('version 2') and 'Apache-2.0' or 'Apache'
+        elseif content:find('gnu lesser general public license') then
+          if content:find('version 3') then
+            return 'LGPL-3.0'
+          end
+          if content:find('version 2') then
+            return 'LGPL-2.0'
+          end
+          return 'LGPL'
+        elseif content:find('gnu general public license') then
+          if content:find('version 3') then
+            return 'GPL-3.0'
+          end
+          if content:find('version 2') then
+            return 'GPL-2.0'
+          end
+          return 'GPL'
+        elseif content:find('bsd 2%-clause') then
+          return 'BSD-2-Clause'
+        elseif content:find('bsd 3%-clause') then
+          return 'BSD-3-Clause'
+        elseif content:find('mozilla public license') then
+          return 'MPL-2.0'
+        elseif content:find('isc license') then
+          return 'ISC'
+        elseif content:find('the unlicense') then
+          return 'Unlicense'
+        elseif content:find('boost software license') then
+          return 'BSL-1.0'
+        end
+        return 'LICENSE'
+      end
+    end
+    cwd = vim.fn.fnamemodify(cwd, ':h')
+  end
+
+  return '<LICENSE>'
+end
+
 -- Helper function to find project name from root level CMakeLists.txt file.
 local function get_cmake_project_name()
   local cwd = vim.fn.expand('%:p:h')
@@ -63,9 +120,9 @@ ls.add_snippets('cpp', {
   -- [[ Umbra Projects custom snippets ]]
   -- Doxygen file header
   s({
-    trig = 'upjx_header',
-    name = 'Umbra Projects File Header',
-    desc = 'Doxygen file header for Umbra Projects',
+    trig = 'prj_header',
+    name = 'C++ Projects File Header',
+    desc = 'Doxygen file header for C++ projects',
   }, {
     t({
       '//===-----------------------------------------------------------------------------------------===//',
@@ -89,7 +146,13 @@ ls.add_snippets('cpp', {
     t({
       ' contributors.',
       '//',
-      '// Distributed under the MIT License.',
+      '// Distributed under the ',
+    }),
+    f(function()
+      return get_license_type()
+    end),
+    t({
+      ' License.',
       '// Please see the LICENSE file in the root of this repository for more information.',
       '//',
       '//===-----------------------------------------------------------------------------------------===//',
@@ -115,8 +178,8 @@ ls.add_snippets('cpp', {
   }),
   -- Doxygen wrapper for file content declarations
   s({
-    trig = 'upjx_dox',
-    name = 'Umbra Projects Doxygen Wrapper',
+    trig = 'prj_dox',
+    name = 'C++ Projects Doxygen Wrapper',
     desc = 'Doxygen wrapper for file content declarations',
   }, {
     t({
